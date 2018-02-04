@@ -62,7 +62,7 @@ func ColorizeTemplate(template string) string {
 		var replacement string
 
 		if strings.HasPrefix(match, "{{") {
-			return match[1:len(match)]
+			return match[1:]
 		}
 
 		ids := splitter.Split(strings.Trim(match, "{}"), -1)
