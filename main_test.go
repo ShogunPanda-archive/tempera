@@ -15,7 +15,7 @@ import (
 func Test(t *testing.T) {
 	g := Goblin(t)
 
-	g.Describe("TestColorize", func() {
+	g.Describe("Colorize", func() {
 		g.It("Applies known styles", func() {
 			g.Assert(Colorize("ABC", "bgBlack", "red")).Equal("\x1b[40m\x1b[31mABC\x1b[39m\x1b[49m")
 		})
@@ -44,7 +44,7 @@ func Test(t *testing.T) {
 		})
 	})
 
-	g.Describe("TestColorizeTemplate", func() {
+	g.Describe("ColorizeTemplate", func() {
 		g.It("Applies known styles and closes them in the right order", func() {
 			g.Assert(ColorizeTemplate("{red}ABC{green}CDE{-}EFG{-}HIJ")).Equal("\x1b[31mABC\x1b[32mCDE\x1b[39m\x1b[31mEFG\x1b[39mHIJ\x1b[0m")
 		})
@@ -78,7 +78,20 @@ func Test(t *testing.T) {
 		})
 	})
 
-	g.Describe("TestColorizeTemplate", func() {
+	g.Describe("CleanTemplate", func() {
+		g.It("Removes style tags from a template", func() {
+			g.Assert(CleanTemplate("{red}ABC{green}CDE{-}EFG{-}HIJ")).Equal("ABCCDEEFGHIJ")
+			g.Assert(CleanTemplate("{red}ABC{yolla}CDE{-}EFG{-}HIJ")).Equal("ABCCDEEFGHIJ")
+			g.Assert(CleanTemplate("{red}}ABC{-}")).Equal("}ABC")
+			g.Assert(CleanTemplate("{red}ABC")).Equal("ABC")
+			g.Assert(CleanTemplate("{{red}")).Equal("{red}")
+			g.Assert(CleanTemplate("{red}ABC{green}CDE{- yellow}EFG{-}HIJ")).Equal("ABCCDEEFGHIJ")
+			g.Assert(CleanTemplate("{red}ABC{green}CDE{reset red}EFG{-}HIJ")).Equal("ABCCDEEFGHIJ")
+			g.Assert(CleanTemplate("{ANSI:5,0,0}ABC{RGB:0,255,0}CDE{bgHEX:#0000FF}EFG")).Equal("ABCCDEEFG")
+		})
+	})
+
+	g.Describe("AddCustomStyle / DeleteCustomStyles", func() {
 		g.It("Allow to define custom styles, supported both by Colorize and ColorizeTemplate", func() {
 			g.Assert(Colorize("ABC", "customRed@@")).Equal("ABC")
 			g.Assert(ColorizeTemplate("{customRed@@ green}ABC{-}")).Equal("\x1b[32mABC\x1b[39m\x1b[0m")

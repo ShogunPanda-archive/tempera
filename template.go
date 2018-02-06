@@ -103,3 +103,14 @@ func ColorizeTemplate(template string) string {
 
 	return modified
 }
+
+// CleanTemplate removes all style tag from a template
+func CleanTemplate(template string) string {
+	return parser.ReplaceAllStringFunc(template, func(match string) string {
+		if strings.HasPrefix(match, "{{") {
+			return match[1:]
+		}
+
+		return ""
+	})
+}
