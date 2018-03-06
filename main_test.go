@@ -74,7 +74,8 @@ func Test(t *testing.T) {
 		})
 
 		g.It("Supports ANSI, RGB and HEX colors", func() {
-			g.Assert(ColorizeTemplate("{ANSI:5,0,0}ABC{RGB:0,255,0}CDE{bgHEX:#0000FF}EFG")).Equal("\x1b[38;5;196mABC\x1b[38;2;0;255;0mCDE\x1b[48;2;0;0;255mEFG\x1b[0m")
+			g.Assert(ColorizeTemplate("{ANSI:5,0,0}ABC{RGB:0,255,0}CDE{bgHEX:#0000FF}EFG")).
+				Equal("\x1b[38;5;196mABC\x1b[38;2;0;255;0mCDE\x1b[48;2;0;0;255mEFG\x1b[0m")
 		})
 	})
 
