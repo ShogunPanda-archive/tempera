@@ -18,8 +18,8 @@ Tempera allows to add coloring to terminal in a really easy way.
 
 To colorize strings, simply use the [Colorize](https://godoc.org/github.com/ShogunPanda/tempera#Colorize) function, passing a list of styles you want to apply.
 The list of supported color names correspondes to the keys of [ANSICodes](https://godoc.org/github.com/ShogunPanda/tempera#pkg-variables) variable.
-```go
 
+```go
 import "github.com/ShogunPanda/tempera"
 
 inRed := tempera.Colorize("Colorized", "red")
@@ -31,7 +31,6 @@ inRedWithBlueBackground := tempera.Colorize("Colorized", "red bgBlue")
 To colorize a template using a tagged template syntax, simply use the [ColorizeTemplate](https://godoc.org/github.com/ShogunPanda/tempera#ColorizeTemplate) function.
 
 ```go
-
 import "github.com/ShogunPanda/tempera"
 
 colored := tempera.ColorizeTemplate("{red}This is in red, {green underline}this in green underlined{-}, this in red again.")

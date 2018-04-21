@@ -34,7 +34,9 @@ func Test(t *testing.T) {
 		g.It("Supports ANSI 16m RGB colors, ignoring invalid colors", func() {
 			g.Assert(Colorize("ABC", "rgb:255,232,0")).Equal("\x1b[38;2;255;232;0mABC\x1b[39m")
 			g.Assert(Colorize("ABC", "bgRGB:33,66,99")).Equal("\x1b[48;2;33;66;99mABC\x1b[49m")
-			g.Assert(Colorize("ABC", "bgRGB:33,123,3000")).Equal("ABC")
+			g.Assert(Colorize("ABC", "bgRGB:999,999,999")).Equal("ABC")
+			g.Assert(Colorize("ABC", "bgRGB:1,999,999")).Equal("ABC")
+			g.Assert(Colorize("ABC", "bgRGB:1,2,999")).Equal("ABC")
 		})
 
 		g.It("Supports ANSI 16m HEX colors, ignoring invalid colors", func() {
