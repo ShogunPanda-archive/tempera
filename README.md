@@ -3,7 +3,7 @@
 [![Release](https://img.shields.io/github/release/ShogunPanda/tempera.svg)](https://github.com/ShogunPanda/tempera/releases/latest)
 [![GoDoc](https://godoc.org/github.com/ShogunPanda/tempera?status.svg)](https://godoc.org/github.com/ShogunPanda/tempera)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ShogunPanda/tempera)](https://goreportcard.com/report/github.com/ShogunPanda/tempera)
-[![Build Status](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/ShogunPanda/tempera)
+[![Build Status](https://img.shields.io/travis/ShogunPanda/tempera/master.svg)](https://travis-ci.org/ShogunPanda/tempera)
 [![Coverage Status](https://img.shields.io/coveralls/github/ShogunPanda/tempera.svg)](https://coveralls.io/github/ShogunPanda/tempera)
 [![License](https://img.shields.io/github/license/ShogunPanda/tempera.svg)](https://github.com/ShogunPanda/tempera/blob/master/LICENSE.md)
 
