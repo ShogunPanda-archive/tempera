@@ -1,5 +1,10 @@
 // +build mage
 
+/*
+ * This file is part of tempera. Copyright (C) 2018 and above Shogun <shogun@cowtech.it>.
+ * Licensed under the MIT license, which can be found at https://choosealicense.com/licenses/mit.
+ */
+
 package main
 
 import (
